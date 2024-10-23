@@ -13,10 +13,15 @@ if (isset($_GET['id'])) {
             exit;
         }
     }
-    echo "Error: The OST with the id {$id} doesn't exist!";
-} else {
+
+    echo "The OST with the id {$id} doesn't exist!";
+    exit;
+}
+
+if (isset($_GET['all'])) {
     header('Content-type: application/json');
     echo json_encode(array_map(function($ost) {
         return $ost->getOSTData();
     }, $osts), JSON_PRETTY_PRINT);
+    exit;
 }
