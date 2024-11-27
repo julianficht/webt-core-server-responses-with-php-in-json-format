@@ -9,7 +9,7 @@ if (isset($_GET['id'])) {
     foreach ($osts as $ost) {
         if ($ost->getOSTData()['id'] === $id) {
             header('Content-type: application/json');
-            echo json_encode($ost->getOSTData(), JSON_PRETTY_PRINT);
+            echo json_encode($ost->JsonSerialize(), JSON_PRETTY_PRINT);
             exit;
         }
     }
@@ -21,7 +21,7 @@ if (isset($_GET['id'])) {
 if (isset($_GET['all'])) {
     header('Content-type: application/json');
     echo json_encode(array_map(function($ost) {
-        return $ost->getOSTData();
+        return $ost->JsonSerialize();
     }, $osts), JSON_PRETTY_PRINT);
     exit;
 }

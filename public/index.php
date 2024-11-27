@@ -13,4 +13,4 @@ $ost->addSong($song2);
 $ost->addSong($song3);
 
 header('Content-type: application/json');
-echo json_encode($ost->getOSTData(), JSON_PRETTY_PRINT);
+echo json_encode($ost->JsonSerialize(), JSON_PRETTY_PRINT);
